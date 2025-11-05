@@ -7,11 +7,12 @@
 }
 
 :root {
-    --primary: #FFD700; /* Bright Yellow */
-    --secondary: #FFC400; /* Darker Yellow */
-    --accent: #FFA000; /* Amber */
-    --light: #FFFDE7; /* Light Yellow */
-    --dark: #212121; /* Dark Gray */
+    --primary: #1E90FF; /* Cerulean Blue - Evolution */
+    --secondary: #445E93; /* Slate Blue - Transition */
+    --accent: #00C8C8; /* Electric Teal - Ascendance */
+    --dark-bg: #2B2B2B; /* Charcoal - Foundation */
+    --light: #F8FAFC; /* Light background */
+    --dark: #1A1A1A; /* Dark text */
     --text: #333333;
     --text-light: #666666;
 }
@@ -46,15 +47,15 @@ section h2:after {
     display: block;
     width: 80px;
     height: 4px;
-    background: var(--accent);
+    background: linear-gradient(to right, var(--secondary), var(--accent));
     margin: 10px auto;
     border-radius: 2px;
 }
 
 .btn {
     display: inline-block;
-    background: var(--primary);
-    color: var(--dark);
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+    color: white;
     padding: 0.8rem 1.5rem;
     border-radius: 4px;
     text-decoration: none;
@@ -66,15 +67,15 @@ section h2:after {
 }
 
 .btn:hover {
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Header Styles */
 header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    color: var(--dark);
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary) 100%);
+    color: white;
     padding: 2rem 0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
@@ -92,46 +93,102 @@ header {
 }
 
 .logo {
-    width: 60px;
+    width: 80px;
     height: 60px;
-    background: var(--dark);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-right: 15px;
     position: relative;
     overflow: hidden;
 }
 
-.logo-inner {
-    width: 40px;
-    height: 40px;
-    background: var(--primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: var(--dark);
-    font-size: 1.2rem;
+/* Ascendant Lattice Logo Visualization */
+.lattice-logo {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.lattice-line {
+    position: absolute;
+    height: 3px;
+    background: linear-gradient(to right, var(--dark-bg), var(--secondary), var(--primary), var(--accent));
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 2px;
+}
+
+.lattice-line-foundation {
+    width: 25%;
+    left: 0;
+    background: var(--dark-bg);
+}
+
+.lattice-line-evolution {
+    width: 40%;
+    left: 25%;
+    background: linear-gradient(to right, var(--secondary), var(--primary));
+}
+
+.lattice-line-ascendance {
+    width: 35%;
+    left: 65%;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+}
+
+/* Lattice branches */
+.lattice-branch {
+    position: absolute;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+}
+
+/* Creating simplified lattice structure */
+.lattice-branch:nth-child(4) {
+    width: 15%;
+    top: 40%;
+    left: 70%;
+    transform: rotate(30deg);
+}
+
+.lattice-branch:nth-child(5) {
+    width: 15%;
+    top: 60%;
+    left: 70%;
+    transform: rotate(-30deg);
+}
+
+.lattice-branch:nth-child(6) {
+    width: 10%;
+    top: 35%;
+    left: 80%;
+    transform: rotate(45deg);
+}
+
+.lattice-branch:nth-child(7) {
+    width: 10%;
+    top: 65%;
+    left: 80%;
+    transform: rotate(-45deg);
 }
 
 .logo-text h1 {
     font-size: 2.2rem;
     margin-bottom: 0.2rem;
-    color: var(--dark);
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .logo-text p {
     font-size: 1rem;
     font-style: italic;
-    color: var(--dark);
-    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.05em;
 }
 
 .contact-info {
     text-align: right;
+    color: white;
 }
 
 .contact-info p {
@@ -141,7 +198,7 @@ header {
 
 /* Navigation */
 nav {
-    background-color: var(--dark);
+    background-color: var(--dark-bg);
     padding: 1rem 0;
     position: sticky;
     top: 0;
@@ -166,15 +223,31 @@ nav a {
     font-weight: 500;
     transition: color 0.3s;
     padding: 0.5rem 0;
+    position: relative;
 }
 
 nav a:hover {
-    color: var(--primary);
+    color: var(--accent);
+}
+
+nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    transition: width 0.3s;
+}
+
+nav a:hover:after {
+    width: 100%;
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(33, 33, 33, 0.8), rgba(33, 33, 33, 0.8)), url('https://images.stockcake.com/public/8/6/c/86cea3f7-21b1-453a-8c27-f4988917a6e9/neon-data-chamber-stockcake.jpg');
+    background: linear-gradient(rgba(43, 43, 43, 0.85), rgba(43, 43, 43, 0.9)), url('https://images.stockcake.com/public/8/6/c/86cea3f7-21b1-453a-8c27-f4988917a6e9/neon-data-chamber-stockcake.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -189,7 +262,7 @@ nav a:hover {
 }
 
 .hero h2:after {
-    background: var(--primary);
+    background: linear-gradient(to right, var(--primary), var(--accent));
 }
 
 .hero p {
@@ -211,7 +284,7 @@ nav a:hover {
 }
 
 .value-highlight {
-    background: #FFF9C4;
+    background: linear-gradient(to right, rgba(30, 144, 255, 0.05), rgba(0, 200, 200, 0.1));
     padding: 1.5rem;
     border-radius: 8px;
     margin-top: 1.5rem;
@@ -233,13 +306,15 @@ nav a:hover {
 }
 
 .profile-placeholder {
-    background: #FFF9C4;
+    background: linear-gradient(135deg, #F0F8FF 0%, #E6F7FF 100%);
     height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    border: 2px dashed var(--accent);
+    border: 2px dashed var(--primary);
+    color: var(--secondary);
+    font-weight: 500;
 }
 
 /* Services Section */
@@ -256,7 +331,8 @@ nav a:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s, box-shadow 0.3s;
     height: 100%;
-    border-top: 4px solid var(--primary);
+    border-top: 4px solid;
+    border-image: linear-gradient(to right, var(--secondary), var(--accent)) 1;
 }
 
 .service-card:hover {
@@ -288,10 +364,11 @@ nav a:hover {
 }
 
 .service-card li:before {
-    content: '*';
+    content: '▶';
     position: absolute;
     left: 0;
     color: var(--accent);
+    font-size: 0.7rem;
 }
 
 /* Experience Section */
@@ -308,7 +385,7 @@ nav a:hover {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: var(--primary);
+    background: linear-gradient(to bottom, var(--secondary), var(--accent));
     transform: translateX(-50%);
 }
 
@@ -332,7 +409,8 @@ nav a:hover {
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    border-left: 4px solid var(--primary);
+    border-left: 4px solid;
+    border-image: linear-gradient(to bottom, var(--primary), var(--accent)) 1;
 }
 
 .timeline-content h3 {
@@ -356,6 +434,7 @@ nav a:hover {
     top: 1.5rem;
     right: -8px;
     z-index: 1;
+    box-shadow: 0 0 0 4px rgba(30, 144, 255, 0.2);
 }
 
 .timeline-item:nth-child(even):before {
@@ -374,7 +453,8 @@ nav a:hover {
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    border-top: 4px solid var(--primary);
+    border-top: 4px solid;
+    border-image: linear-gradient(to right, var(--secondary), var(--accent)) 1;
 }
 
 .skill-category h3 {
@@ -396,11 +476,12 @@ nav a:hover {
 }
 
 .skill-tag {
-    background: #FFF9C4;
+    background: linear-gradient(135deg, #E6F7FF 0%, #F0F8FF 100%);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.9rem;
     color: var(--dark);
+    border: 1px solid rgba(30, 144, 255, 0.2);
 }
 
 /* Contact Section */
@@ -415,7 +496,8 @@ nav a:hover {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    border-top: 4px solid var(--primary);
+    border-top: 4px solid;
+    border-image: linear-gradient(to right, var(--secondary), var(--accent)) 1;
 }
 
 .contact-info-card h3 {
@@ -443,6 +525,14 @@ nav a:hover {
     border: 1px solid #e2e8f0;
     border-radius: 4px;
     font-size: 1rem;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1);
 }
 
 .contact-form textarea {
@@ -452,7 +542,7 @@ nav a:hover {
 
 /* Footer */
 footer {
-    background: var(--dark);
+    background: var(--dark-bg);
     color: white;
     padding: 3rem 0 2rem;
 }
@@ -478,7 +568,7 @@ footer {
 }
 
 .footer-section a:hover {
-    color: var(--primary);
+    color: var(--accent);
 }
 
 .copyright {
@@ -546,5 +636,10 @@ footer {
     
     .hero p {
         font-size: 1rem;
+    }
+    
+    .logo {
+        width: 60px;
+        height: 45px;
     }
 }
