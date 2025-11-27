@@ -1,17 +1,16 @@
-# macOS
-.DS_Store
-*.DS_Store
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
+# Windows files
 Thumbs.db
-# Development
-node_modules/
-.env
-*.log
+*.db
+ehthumbs.db
+Desktop.ini
+
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary files
 *.tmp
 *.temp
-.DS_Store
-*.DS_Store
-Thumbs.db
+*.log
+
